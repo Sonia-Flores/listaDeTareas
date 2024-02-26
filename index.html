@@ -7,9 +7,51 @@
     <title>Lista de tareas</title>
 </head>
 <body>
-    
+    <div class="wrapper">
+
+        <header>
+            <h1>SONI TO-DO APP </h1>
+            
+        </header>
+        <main>
+            <section id="new">
+                <form id="createTaskform">
+                    <input type="text" id="task" name="task" placeholder="Agregar tarea">
+                </form>
+                <select id="selectPriority">
+                    <option value="">Selecciona su prioridad</option>
+                    <option value="urgent">Urgente</option>
+                    <option value="daily">Diaria</option>
+                    <option value="monthly">Mensual</option>
+                </select>
+                <input type="submit" id="create" value="+">
+            </section>
+            <section id="filters">
+
+                <select id="filterPriority">
+                    <option value="">Filtrar</option>
+                    <option value="urgent">Urgente</option>
+                    <option value="daily">Diaria</option>
+                    <option value="monthly">Mensual</option>
+                </select>
+                <form id="createTaskform">
+                    <input type="text" id="task" name="task" placeholder="Buscar tarea...">
+                </form>
+            </section>
+            <section id="taskList">
+                <div>
+                    <p>Estudiar JavaScript</p>
+                    <input type="submit" value="X">
+                </div>
+            </section>
+        </main>
+        <footer>
+            Cosas que irán en el footer
+        </footer>
+
+        
+    </div>
 
 
     <script src="./js/listaTareas.js"></script>
 </body>
-</html>

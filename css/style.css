@@ -1,0 +1,116 @@
+@import url(reset.css);
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(1, 11, 19);
+}
+.wrapper {
+  margin: 50px auto;
+  max-width: 800px;
+  background-color: cadetblue;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px black;
+}
+form {
+  width: 50%;
+
+  & input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+  }
+}
+select {
+  padding: 10px;
+}
+header {
+  background-color:rgb(32, 67, 68);
+  color: white;
+  padding: 30px 0px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+section#new {
+  background-color: #ffffcc;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  padding: 40px 15px;
+
+  & #create {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #007bff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+    &:active {
+      background-color: #003d7a;
+    }
+  }
+}
+
+.myTask {
+  width: 100%;
+  text-align: center;
+
+  background-color: #add8e6;
+  padding: 15px;
+  font-weight: 700;
+  color: #666;
+}
+section#filters {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  padding: 40px 15px;
+}
+
+section#taskList div {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  padding-left: 15px;
+  padding-bottom: 30px;
+
+  & p {
+    width: calc(90% - 10px);
+    background-color: white;
+    padding: 20px 10px;
+    border-radius: 5px;
+  }
+  & input {
+    width: calc(10% - 10px);
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(213, 17, 17, 0.762);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darkred;
+    }
+    &:active {
+      background-color: darkred;
+    }
+  }
+}

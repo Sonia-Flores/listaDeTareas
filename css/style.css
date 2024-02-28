@@ -2,64 +2,65 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(1, 11, 19);
+  background-image: url("./../img/fondo4.png");
+  background-size: cover;
+  background-position: center;
 }
-.wrapper {
-  margin: 50px auto;
-  max-width: 800px;
-  background-color: cadetblue;
-  border-radius: 10px;
-  box-shadow: 1px 1px 10px black;
-}
-form {
-  width: 50%;
 
-  & input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid grey;
-  }
+.wrapper {
+  margin: 0px auto;
+  max-width: 1000px;
+  background-color: rgb(32, 67, 68);
+  border-radius: 10px;
+}
+#task {
+  width: calc(50% - 10px);
+  margin-left: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
 }
 select {
   padding: 10px;
+  width: calc(40% - 10px);
 }
 header {
-  background-color:rgb(32, 67, 68);
+  background-color: rgb(32, 67, 68);
   color: white;
   padding: 30px 0px;
   text-align: center;
   font-weight: 700;
   font-size: 2rem;
-;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
-section#new {
+#createTaskForm {
   background-color: #ffffcc;
   display: flex;
   flex-wrap: wrap;
-  column-gap: 10px;
-  padding: 40px 15px;
+  gap: 10px;
+  padding: 40px 10px;
 
+  & #inputCreateTask {
+    width: 50%;
+  }
   & #create {
-    padding: 10px 15px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
+    width: calc(10% - 10px);
+
     border-radius: 5px;
+    border: none;
     cursor: pointer;
-    color: #fff;
-    background-color: #007bff;
+    background-color: #4bbd26;
+    color: whitesmoke;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: #2d7514;
+      color: whitesmoke;
     }
     &:active {
-      background-color: #003d7a;
+      background-color: #4bbd26;
+      color: whitesmoke;
     }
   }
 }
@@ -68,10 +69,11 @@ section#new {
   width: 100%;
   text-align: center;
 
-  background-color: #add8e6;
-  padding: 15px;
+  background-color: cadetblue;
+  padding: 15px 0px;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #666;
+  color: #fff;
 }
 section#filters {
   display: flex;
@@ -86,31 +88,45 @@ section#taskList div {
   column-gap: 10px;
   padding-left: 15px;
   padding-bottom: 30px;
+  word-wrap: break-word;
 
   & p {
     width: calc(90% - 10px);
-    background-color: white;
     padding: 20px 10px;
     border-radius: 5px;
   }
-  & input {
+  & button {
     width: calc(10% - 10px);
     padding: 10px 15px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
-    border: none;
+    border: 1px solid rgba(213, 17, 17, 0.762);
     border-radius: 5px;
     cursor: pointer;
-    color: #fff;
-    background-color: rgba(213, 17, 17, 0.762);
+    color: rgba(213, 17, 17, 0.762);
+    background-color: whitesmoke;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: darkred;
+      background-color: rgba(213, 17, 17, 0.762);
+      color: whitesmoke;
     }
     &:active {
-      background-color: darkred;
+      background-color: rgba(213, 17, 17, 0.762);
+      color: whitesmoke;
     }
   }
+}
+p.urgent {
+  background-color: rgb(245, 117, 136);
+}
+p.daily {
+  background-color: rgb(53, 252, 186);
+}
+p.monthly {
+  background-color: rgb(226, 226, 74);
+}
+p.noPriority {
+  background-color: white;
 }

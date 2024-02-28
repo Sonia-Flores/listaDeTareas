@@ -1,65 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Lista de tareas</title>
-</head>
-<body>
+  </head>
+  <body>
+    <header>
+      <h1>TO-DO APP</h1>
+    </header>
     <div class="wrapper">
-
-        <header>
-            <h1>TO-DO APP </h1>
-            
-        </header>
-        <main>
-            <section id="new">
-                <form id="createTaskform">
-                    <input type="text" id="task" name="task" placeholder="Agregar tarea">
-                </form>
-                <select id="selectPriority">
-                    <option value="">Selecciona su prioridad</option>
-                    <option value="urgent">Urgente</option>
-                    <option value="daily">Diaria</option>
-                    <option value="monthly">Mensual</option>
-                </select>
-                <input type="submit" id="create" value="+">
-            </section>
-            <h2 class="myTask">MIS TAREAS</h2>
-            <section id="filters">
-                <select id="filterPriority">
-                    <option value="">Filtrar</option>
-                    <option value="urgent">Urgente</option>
-                    <option value="daily">Diaria</option>
-                    <option value="monthly">Mensual</option>
-                </select>
-                <form id="taskSearch">
-                    <input type="text" id="task" name="task" placeholder="Buscar tarea...">
-                </form>
-            </section>
-            <section id="taskList">
-                <div>
-                    <p style="background-color: aquamarine;">Estudiar JavaScript</p>
-                    <input type="submit" value="X">
-                </div>
-                <div>
-                    <p style="background-color: lightyellow">Estudiar JavaScript</p>
-                    <input type="submit" value="X">
-                </div>
-                <div>
-                    <p style="background-color: lightpink">Estudiar JavaScript</p>
-                    <input type="submit" value="X">
-                </div>
-            </section>
-        </main>
-        <footer>
-          
-        </footer>
-
-        
+     
+      <main>
+        <section id="new">
+          <form id="createTaskForm">
+            <input
+              type="text"
+              id="inputCreateTask"
+              name="inputCreateTask"
+              placeholder="  Agregar tarea"
+            />
+            <select id="selectPriority">
+              <option value="" selected>Selecciona su prioridad</option>
+              <option value="urgent">Urgente</option>
+              <option value="daily">Diaria</option>
+              <option value="monthly">Mensual</option>
+            </select>
+            <input type="submit" id="create" value="Guardar" />
+          </form>
+        </section>
+        <h2 class="myTask">MI LISTA DE TAREAS</h2>
+        <section id="filters">
+          <select id="filterPriority">
+            <option value="">Filtrar</option>
+            <option value="urgent">Urgente</option>
+            <option value="daily">Diaria</option>
+            <option value="monthly">Mensual</option>
+          </select>
+          <form id="taskSearch">
+            <input
+              type="text"
+              id="task"
+              name="task"
+              placeholder="Buscar tarea..."
+            />
+          </form>
+        </section>
+        <section id="taskList">       
+        </section>
+      </main>
+      <footer></footer>
     </div>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/listaTareas.js"></script>
-</body>
+  </body>
+</html>

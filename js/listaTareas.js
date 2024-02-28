@@ -9,11 +9,10 @@ const sectiontaskList = document.querySelector("#taskList");
 
 /**
  * TODO Evitar que el texto desborde de la tarea
- * TODO Cargar una lista de 4 notas por defecto
  */
 
 // Variable para controlar el ID único de las nuevas tareas.
-let miId = 5;
+let miId = 101;
 
 /**
  * ! Display a message to the user using SweetAlert2 based on the type of message.
@@ -133,6 +132,18 @@ const getDataForm = (event) => {
 
   event.target.reset();
 };
+/**
+ * ! Imprime todas las tareas en un elemento del DOM especificado.
+ * @param {Array} lista - Un array de objetos tarea que se van a imprimir.
+ * @param {HTMLElement} domElement - El elemento del DOM donde se imprimirán las tareas.
+ * * Itera sobre el array de tareas proporcionado y para cada tarea, llama a la función `printOneTask` pasando el objeto de la tarea y el elemento del DOM como argumentos. Esta función no devuelve nada,pero modifica el DOM al añadir los elementos de cada tarea al elemento especificado.
+ * ? Cada objeto tarea dentro de la lista debe tener un formato específico que la función `printOneTask` pueda procesar, usualmente incluyendo propiedades como `id`, `description`, y `priority`.
+ */
+function printAllTask(lista, domElement) {
+  lista.forEach(item => printOneTask(item, domElement))
+}
+
+printAllTask(taskArray, sectiontaskList)
 
 // ! Añade un event listener al formulario para crear nuevas tareas al enviar el formulario.
 formNewTask.addEventListener("submit", getDataForm);

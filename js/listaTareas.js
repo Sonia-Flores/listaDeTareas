@@ -20,6 +20,7 @@ let miId = 101;
  * ? "taskOk" muestra un mensaje de éxito
  * ? "taskEmpty" advierte al usuario sobre la necesidad de ingresar una descripción de la tarea.
  * ? "taskDelete" informa al usuario que una tarea ha sido eliminada con éxito.
+ * ? "notFound" informa al usuario de que no hay tareas con ese filtro.
  * ? Ejemplo de uso: displayMsg("taskOk", "Nueva tarea añadida con éxito");
  */
 const displayMsg = (typeMsg, message) => {
@@ -174,6 +175,12 @@ formNewTask.addEventListener("submit", getDataForm);
 
 //FIlTRAR LAS TAREAS
 
+/**
+ * !Filtra las tareas por prioridad seleccionada y las muestra. Si no se selecciona ninguna prioridad, muestra todas las tareas.
+ * *Si no hay tareas que coincidan con la prioridad seleccionada, muestra un mensaje.
+ *
+ * @param {Event} event - El evento del cambio de selección que dispara la función.
+ */
 const getDataFilterPriority = (event) => {
   event.preventDefault();
   const priority = event.target.value;
@@ -189,8 +196,15 @@ const getDataFilterPriority = (event) => {
     displayMsg("taskDelete", "No hay tareas!");
   }
 };
+
+// Escucha el evento de cambio en el elemento 'filterPriority' y llama a `getDataFilterPriority`.
 filterPriority.addEventListener("change", getDataFilterPriority);
 
+/**
+ * !Filtra las tareas por la descripción buscada y las muestra. La búsqueda no distingue entre mayúsculas y minúsculas.
+ *
+ * @param {Event} event - El evento de entrada que dispara la función.
+ */
 const filterSearch = (event) => {
   const filterList = taskArray.filter((task) => {
     return task.description
@@ -199,4 +213,6 @@ const filterSearch = (event) => {
   });
   printAllTask(filterList, sectiontaskList);
 };
+
+// Escucha el evento de entrada en el elemento 'formTaskSearch' y llama a `filterSearch`.
 formTaskSearch.addEventListener("input", filterSearch);

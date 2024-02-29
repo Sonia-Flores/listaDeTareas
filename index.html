@@ -11,18 +11,18 @@
     <header>
       <h1>TO-DO APP</h1>
     </header>
-    <div class="wrapper">
-     
-      <main>
+    <main>
+      <div class="wrapper">
         <section id="new">
           <form id="createTaskForm">
+           <div class="add">
             <input
-              type="text"
-              id="inputCreateTask"
-              name="inputCreateTask"
-              placeholder="  Agregar tarea"
-            />
-            <select id="selectPriority">
+            type="text"
+            id="inputCreateTask"
+            name="inputCreateTask"
+            placeholder="Agregar tarea"/>
+           </div> 
+            <select id="selectPriority" name="selectPriority">
               <option value="" selected>Selecciona su prioridad</option>
               <option value="urgent">Urgente</option>
               <option value="daily">Diaria</option>
@@ -34,7 +34,8 @@
         <h2 class="myTask">MI LISTA DE TAREAS</h2>
         <section id="filters">
           <select id="filterPriority">
-            <option value="">Filtrar</option>
+            <option value="" selected>Mostrar todas</option>
+            <option value="noPriority">Sin prioridad</option> 
             <option value="urgent">Urgente</option>
             <option value="daily">Diaria</option>
             <option value="monthly">Mensual</option>
@@ -48,8 +49,7 @@
             />
           </form>
         </section>
-        <section id="taskList"> 
-        </section>
+        <section id="taskList"></section>
       </main>
       <footer></footer>
     </div>

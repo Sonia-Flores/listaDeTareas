@@ -1,29 +1,27 @@
 // Selecciona el formulario para crear nuevas tareas.
 const formNewTask = document.querySelector("#createTaskForm");
-// Selecciona el input para ingresar la descripción de la nueva tarea.
-const inputCreateTask = document.querySelector("#inputCreateTask");
-// Selecciona el select para elegir la prioridad de la nueva tarea.
-const selectPriority = document.querySelector("#selectPriority");
 // Selecciona la sección donde se listarán las tareas.
 const sectiontaskList = document.querySelector("#taskList");
+// Selecciona el buscador en tiempo real
+const formTaskSearch = document.querySelector("#taskSearch");
+// Selecciona el select para filtrar por prioridad
+const filterPriority = document.querySelector("#filterPriority");
 
-/**
- * TODO Evitar que el texto desborde de la tarea
- */
 
 // Variable para controlar el ID único de las nuevas tareas.
 let miId = 101;
 
+//CREAR UNA NUEVA TAREA
+
 /**
- * ! Display a message to the user using SweetAlert2 based on the type of message.
- * @param {string} typeMsg - The type of message to be displayed. Can be "taskOk", "taskEmpty", or "taskDelete".
- * @param {string} message - The main message to be displayed to the user.
- * @returns {void} - The function does not return a value but triggers a SweetAlert2 modal.
- * ? "taskOk" shows a success message
- * ? "taskEmpty" warns the user about the need to enter a task description.
- * ? "taskDelete" informs the user that a task has been successfully deleted.
- *  TODO: Consider adding more case types for different notifications.
- * ? Example usage: displayMsg("taskOk", "New task added successfully");
+ * ! Muestra un mensaje al usuario usando SweetAlert2 basado en el tipo de mensaje.
+ * @param {string} typeMsg - El tipo de mensaje a mostrar. Puede ser "taskOk", "taskEmpty" o "taskDelete".
+ * @param {string} message - El mensaje principal a mostrar al usuario.
+ * @returns {void} - La función no devuelve un valor pero activa un modal de SweetAlert2.
+ * ? "taskOk" muestra un mensaje de éxito
+ * ? "taskEmpty" advierte al usuario sobre la necesidad de ingresar una descripción de la tarea.
+ * ? "taskDelete" informa al usuario que una tarea ha sido eliminada con éxito.
+ * ? Ejemplo de uso: displayMsg("taskOk", "Nueva tarea añadida con éxito");
  */
 const displayMsg = (typeMsg, message) => {
   switch (typeMsg) {
@@ -56,8 +54,8 @@ const displayMsg = (typeMsg, message) => {
  */
 const keepTask = (newTask) => {
   if (newTask.description !== "") {
+    taskArray.push(newTask);
     miId++;
-    taskArray.push(task);
     return {
       success: true,
       message: "Nueva tarea añadida!",
@@ -104,6 +102,7 @@ const printOneTask = (task, dom) => {
   if (task.priority !== "") {
     p.classList.add(task.priority);
   } else {
+    task.priority = "noPriority";
     p.classList.add("noPriority");
   }
   div.append(p, button);
@@ -119,9 +118,10 @@ const getDataForm = (event) => {
 
   const newTask = {
     id: miId,
-    description: inputCreateTask.value,
-    priority: selectPriority.value,
+    description: event.target.inputCreateTask.value,
+    priority: event.target.selectPriority.value,
   };
+
   const response = keepTask(newTask);
   if (response.success) {
     printOneTask(newTask, sectiontaskList);
@@ -140,10 +140,40 @@ const getDataForm = (event) => {
  * ? Cada objeto tarea dentro de la lista debe tener un formato específico que la función `printOneTask` pueda procesar, usualmente incluyendo propiedades como `id`, `description`, y `priority`.
  */
 function printAllTask(lista, domElement) {
-  lista.forEach(item => printOneTask(item, domElement))
+  sectiontaskList.innerHTML = "";
+  lista.forEach((item) => printOneTask(item, domElement));
 }
 
-printAllTask(taskArray, sectiontaskList)
+printAllTask(taskArray, sectiontaskList);
 
 // ! Añade un event listener al formulario para crear nuevas tareas al enviar el formulario.
 formNewTask.addEventListener("submit", getDataForm);
+
+//FIlTRAR LAS TAREAS
+
+
+
+const getDataFilterPriority = (event) => {
+  console.log(event.target.value);
+
+  event.preventDefault();
+  let priority = event.target.value;
+
+  if (event.target.value !== "") {
+    let filterlist = taskArray.filter((task) => task.priority === priority);
+    printAllTask(filterlist, sectiontaskList);
+  } else {
+    printAllTask(taskArray, sectiontaskList);
+  }
+};
+filterPriority.addEventListener("change", getDataFilterPriority);
+
+const filterSearch = (event) => {
+  const filterList = taskArray.filter((task) => {
+    return task.description
+      .toLowerCase()
+      .startsWith(event.target.value.toLowerCase());
+  });
+  printAllTask(filterList, sectiontaskList);
+};
+formTaskSearch.addEventListener("input", filterSearch);

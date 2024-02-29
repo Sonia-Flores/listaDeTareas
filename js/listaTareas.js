@@ -7,7 +7,6 @@ const formTaskSearch = document.querySelector("#taskSearch");
 // Selecciona el select para filtrar por prioridad
 const filterPriority = document.querySelector("#filterPriority");
 
-
 // Variable para controlar el ID único de las nuevas tareas.
 let miId = 101;
 
@@ -37,11 +36,19 @@ const displayMsg = (typeMsg, message) => {
         text: "Por favor, ingresa una descripción para la tarea.",
         icon: "warning",
       });
+
     case "taskDelete":
       Swal.fire({
         title: message,
         text: "La tarea ha sido eliminada",
         icon: "error",
+      });
+
+    case "notFound":
+      Swal.fire({
+        title: message,
+        text: "No hay tareas con esas características.",
+        icon: "warning",
       });
   }
 };
@@ -93,19 +100,35 @@ const deleteTask = (event) => {
  */
 const printOneTask = (task, dom) => {
   const div = document.createElement("div");
+  div.classList.add(
+    "d-flex",
+    "justify-content-between",
+    "align-items-center",
+    "mb-3",
+    "p-2",
+    "shadow-sm",
+    "rounded"
+  );
+
   const p = document.createElement("p");
-  const button = document.createElement("button");
-  button.addEventListener("click", deleteTask);
-  button.textContent = "X";
-  button.dataset.id = task.id;
   p.textContent = task.description;
+
   if (task.priority !== "") {
-    p.classList.add(task.priority);
+    div.classList.add(task.priority);
   } else {
     task.priority = "noPriority";
     p.classList.add("noPriority");
   }
-  div.append(p, button);
+
+  const button = document.createElement("button");
+  button.addEventListener("click", deleteTask);
+  button.textContent = "X";
+  button.dataset.id = task.id;
+  button.classList.add("btn", "btn-danger", "btn-m", "float-end");
+
+  div.appendChild(p);
+  div.appendChild(button);
+
   dom.appendChild(div);
 };
 
@@ -151,19 +174,19 @@ formNewTask.addEventListener("submit", getDataForm);
 
 //FIlTRAR LAS TAREAS
 
-
-
 const getDataFilterPriority = (event) => {
-  console.log(event.target.value);
-
   event.preventDefault();
-  let priority = event.target.value;
-
-  if (event.target.value !== "") {
-    let filterlist = taskArray.filter((task) => task.priority === priority);
-    printAllTask(filterlist, sectiontaskList);
-  } else {
+  const priority = event.target.value;
+  if (priority === "") {
     printAllTask(taskArray, sectiontaskList);
+    return; 
+  }
+  const filterList = taskArray.filter((task) => task.priority === priority);
+
+  if (filterList.length > 0) {
+    printAllTask(filterList, sectiontaskList);
+  } else {
+    displayMsg("taskDelete", "No hay tareas!");
   }
 };
 filterPriority.addEventListener("change", getDataFilterPriority);

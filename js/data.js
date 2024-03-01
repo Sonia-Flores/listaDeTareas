@@ -19,6 +19,6 @@ const taskArray = [
   {
     id: 4,
     description: "Visitar el parque de Oviedo",
-    priority: "",
+    priority: "noPriority",
   },
 ];

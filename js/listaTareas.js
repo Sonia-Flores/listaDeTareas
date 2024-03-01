@@ -39,14 +39,14 @@ const displayMsg = (typeMsg, message) => {
       });
 
     case "taskDelete":
-      Swal.fire({
+      return Swal.fire({
         title: message,
         text: "La tarea ha sido eliminada",
         icon: "error",
       });
 
     case "notFound":
-      Swal.fire({
+      return Swal.fire({
         title: message,
         text: "No hay tareas con esas características.",
         icon: "warning",
@@ -130,7 +130,7 @@ const printOneTask = (task, dom) => {
   div.appendChild(p);
   div.appendChild(button);
 
-  dom.appendChild(div);
+  dom.prepend(div);
 };
 
 /**
@@ -186,7 +186,7 @@ const getDataFilterPriority = (event) => {
   const priority = event.target.value;
   if (priority === "") {
     printAllTask(taskArray, sectiontaskList);
-    return; 
+    return;
   }
   const filterList = taskArray.filter((task) => task.priority === priority);
 

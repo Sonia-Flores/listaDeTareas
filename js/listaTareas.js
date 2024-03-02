@@ -1,10 +1,6 @@
-// Selecciona el formulario para crear nuevas tareas.
 const formNewTask = document.querySelector("#createTaskForm");
-// Selecciona la sección donde se listarán las tareas.
 const sectiontaskList = document.querySelector("#taskList");
-// Selecciona el buscador en tiempo real
 const formTaskSearch = document.querySelector("#taskSearch");
-// Selecciona el select para filtrar por prioridad
 const filterPriority = document.querySelector("#filterPriority");
 
 // Variable para controlar el ID único de las nuevas tareas.
@@ -193,7 +189,7 @@ const getDataFilterPriority = (event) => {
   if (filterList.length > 0) {
     printAllTask(filterList, sectiontaskList);
   } else {
-    displayMsg("taskDelete", "No hay tareas!");
+    displayMsg("notFound", "No hay tareas!");
   }
 };
 

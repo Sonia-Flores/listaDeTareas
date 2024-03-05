@@ -114,7 +114,7 @@ const printOneTask = (task, dom) => {
     div.classList.add(task.priority);
   } else {
     task.priority = "noPriority";
-    p.classList.add("noPriority");
+    div.classList.add("noPriority");
   }
 
   const button = document.createElement("button");
@@ -190,6 +190,7 @@ const getDataFilterPriority = (event) => {
     printAllTask(filterList, sectiontaskList);
   } else {
     displayMsg("notFound", "No hay tareas!");
+    printAllTask(taskArray, sectiontaskList);
   }
 };
 
